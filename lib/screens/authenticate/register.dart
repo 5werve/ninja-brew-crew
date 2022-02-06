@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:ninja_brew_crew/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   final Function toggleView;
-  SignIn({required this.toggleView});
+  Register({required this.toggleView});
 
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
   // text field state
   String email = '';
@@ -23,11 +24,11 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
           backgroundColor: Colors.brown[400],
           elevation: 0.0,
-          title: Text('Sign in to Brew Crew'),
+          title: Text('Sign up to Brew Crew'),
           actions: <Widget>[
             FlatButton.icon(
               icon: Icon(Icons.person),
-              label: Text('Register'),
+              label: Text('Sign In'),
               onPressed: () {
                 widget.toggleView();
               },
@@ -36,6 +37,7 @@ class _SignInState extends State<SignIn> {
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Form(
+          key: _formKey,
           child: Column(children: <Widget>[
             SizedBox(height: 20.0),
             TextFormField(
@@ -53,11 +55,12 @@ class _SignInState extends State<SignIn> {
             SizedBox(height: 20.0),
             RaisedButton(
               onPressed: () async {
-                print(email);
-                print(password);
+                // if (_formKey.currentState.) {
+
+                // }
               },
               color: Colors.pink[400],
-              child: Text('Sign in', style: TextStyle(color: Colors.white)),
+              child: Text('Register', style: TextStyle(color: Colors.white)),
             ),
           ]),
         ),
