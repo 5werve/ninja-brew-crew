@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ninja_brew_crew/screens/home/settings_form.dart';
 import 'package:ninja_brew_crew/services/auth.dart';
 import 'package:ninja_brew_crew/services/database.dart';
 import 'package:provider/provider.dart';
@@ -18,14 +19,14 @@ class Home extends StatelessWidget {
           builder: (context) {
             return Container(
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-              child: Text('botton sheet'),
+              child: SettingsForm(),
             );
           });
     }
 
     return StreamProvider<List<Brew>?>.value(
       value: DatabaseService(uid: '0').brews,
-      initialData: null,
+      initialData: [Brew(name: 'new crew member', sugars: '0', strength: 100)],
       child: Scaffold(
         backgroundColor: Colors.brown[50],
         appBar: AppBar(
